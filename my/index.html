@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let apiKey = "280o02ba0daf2b414a53ctfe4e6155a2";
+
+      let apiUrl = `https://api.shecodes.io/weather/v1/current?query=amsterdam&key=${apiKey}&units=metric`;
+      console.log(apiUrl);
+
+      function displayWeather(response) {
+        let temperature = Math.round(response.data.temperature.current);
+        let newH1 = document.querySelector("#heading");
+        let city = response.data.city;
+        newH1.innerHTML = `It is ${temperature} degrees in ${city}`;
+      }
+
+      axios.get(apiUrl).then(displayWeather);
+    </script>
+  </body>
+</html>
